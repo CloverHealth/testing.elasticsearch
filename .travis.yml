@@ -16,5 +16,7 @@ cache:
     - $HOME/.cache/pip
 before_install:
   - curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.3.0.deb && sudo dpkg -i --force-confnew elasticsearch-5.3.0.deb && sudo service elasticsearch restart
+  - sudo chmod 666 /etc/elasticsearch/elasticsearch.yml
+  - sudo ls -lha /etc/elasticsearch/
 install: pip install docutils tox
 script: tox
