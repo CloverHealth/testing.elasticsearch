@@ -15,8 +15,6 @@ cache:
   directories:
     - $HOME/.cache/pip
 before_install:
-  - java -version
   - curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.3.0.deb && sudo dpkg -i --force-confnew elasticsearch-5.3.0.deb && sudo service elasticsearch restart
-  - curl -v http://localhost:9200/
 install: pip install docutils tox
 script: tox
