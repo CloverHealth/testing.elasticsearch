@@ -24,7 +24,7 @@ if sys.version_info < (2, 7):
 
 
 setup(
-    name='testing.elasticsearch2',
+    name='testing.elasticsearch',
     version='1.0.0',
     description='automatically setups a elasticsearch instance in a temporary '
                 'directory, and destroys it after testing',
@@ -33,7 +33,7 @@ setup(
     keywords=[],
     author='Takeshi Komiya',
     author_email='i.tkomiya at gmail.com',
-    url='https://github.com/tk0miya/testing.elasticsearch',
+    url='https://github.com/CloverHealth/testing.elasticsearch',
     license='Apache License 2.0',
     packages=find_packages('src'),
     package_dir={'': 'src'},
