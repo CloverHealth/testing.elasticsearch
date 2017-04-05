@@ -1,7 +1,10 @@
 sudo: true
+addons:
+  apt:
+    packages:
+      - oracle-java8-set-default
 language: python
 python: 3.5
-service: elasticsearch
 env:
   matrix:
 #    - TOXENV=py27
