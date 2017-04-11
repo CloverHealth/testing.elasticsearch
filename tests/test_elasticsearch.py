@@ -28,7 +28,7 @@ class TestElasticsearch(unittest.TestCase):
             # connect to elasticsearch (w/ elasticsearch-py)
             elasticsearch = Elasticsearch(**es.dsn())
             self.assertIsNotNone(elasticsearch)
-            self.assertRegexpMatches(es.read_bootlog(), '\[INFO \]\[node                     \] \[.*?\] started')
+            self.assertRegexpMatches(es.read_bootlog(), '\[INFO \]\[o.e.n.Node\s*\] \[.*?\] started')
         finally:
             # shutting down
             pid = es.server_pid
@@ -83,6 +83,9 @@ class TestElasticsearch(unittest.TestCase):
 
         self.assertTrue(es1.is_alive())
         self.assertTrue(es2.is_alive())
+
+        es1.stop()
+        es2.stop()
 
     @patch('testing.elasticsearch.find_elasticsearch_home')
     def test_elasticsearch_is_not_found(self, find_elasticsearch_home):

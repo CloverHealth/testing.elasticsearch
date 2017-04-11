@@ -59,7 +59,8 @@ class Elasticsearch(Database):
             self.elasticsearch_yaml['path.data'] = os.path.join(self.base_dir, 'data')
             self.elasticsearch_yaml['path.logs'] = os.path.join(self.base_dir, 'logs')
             self.elasticsearch_yaml['cluster.name'] = generate_cluster_name()
-            self.elasticsearch_yaml['discovery.zen.ping.multicast.enabled'] = False
+            self.elasticsearch_yaml['discovery.zen.ping.unicast.hosts'] = ''
+            self.elasticsearch_yaml['discovery.zen.minimum_master_nodes'] = 0
 
             if user_config:
                 for key, value in user_config.items():
@@ -72,12 +73,6 @@ class Elasticsearch(Database):
         return os.path.join(self.base_dir, 'data')
 
     def initialize_database(self):
-        # copy data files
-        if self.settings['copy_data_from'] and self.elasticsearch_yaml['cluster.name']:
-            indexdir = os.listdir(self.settings['copy_data_from'])[0]
-            os.rename(os.path.join(self.base_dir, 'data', indexdir),
-                      os.path.join(self.base_dir, 'data', self.elasticsearch_yaml['cluster.name']))
-
         # conf directory
         for filename in os.listdir(self.elasticsearch_home):
             srcpath = os.path.join(self.elasticsearch_home, filename)
