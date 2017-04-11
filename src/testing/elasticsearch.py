@@ -59,6 +59,8 @@ class Elasticsearch(Database):
             self.elasticsearch_yaml['path.data'] = os.path.join(self.base_dir, 'data')
             self.elasticsearch_yaml['path.logs'] = os.path.join(self.base_dir, 'logs')
             self.elasticsearch_yaml['cluster.name'] = generate_cluster_name()
+            self.elasticsearch_yaml['discovery.zen.ping.unicast.hosts'] = ''
+            self.elasticsearch_yaml['discovery.zen.minimum_master_nodes'] = 0
 
             if user_config:
                 for key, value in user_config.items():
