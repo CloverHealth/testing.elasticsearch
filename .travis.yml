@@ -6,6 +6,8 @@ addons:
 language: python
 python: 3.5
 env:
+  global:
+    - ES_JAVA_OPTS="\"-Xms512m -Xmx512m\""
   matrix:
     - TOXENV=py27
     - TOXENV=py33
