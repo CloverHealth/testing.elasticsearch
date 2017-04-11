@@ -7,7 +7,7 @@ language: python
 python: 3.5
 env:
   global:
-    - ES_JAVA_OPTS='-Xms1g -Xmx1g'
+    - ES_HEAP_SIZE=2g
   matrix:
     - TOXENV=py27
     - TOXENV=py33
