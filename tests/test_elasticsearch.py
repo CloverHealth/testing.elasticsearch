@@ -28,7 +28,7 @@ class TestElasticsearch(unittest.TestCase):
             # connect to elasticsearch (w/ elasticsearch-py)
             elasticsearch = Elasticsearch(**es.dsn())
             self.assertIsNotNone(elasticsearch)
-            self.assertRegexpMatches(es.read_bootlog(), '\[INFO \]\[node                     \] \[.*?\] started')
+            self.assertRegexpMatches(es.read_bootlog(), '\[INFO \]\[o.e.n.Node\s*\] \[.*?\] started')
         finally:
             # shutting down
             pid = es.server_pid
