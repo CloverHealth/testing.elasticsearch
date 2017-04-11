@@ -84,6 +84,9 @@ class TestElasticsearch(unittest.TestCase):
         self.assertTrue(es1.is_alive())
         self.assertTrue(es2.is_alive())
 
+        es1.stop()
+        es2.stop()
+
     @patch('testing.elasticsearch.find_elasticsearch_home')
     def test_elasticsearch_is_not_found(self, find_elasticsearch_home):
         find_elasticsearch_home.side_effect = RuntimeError
